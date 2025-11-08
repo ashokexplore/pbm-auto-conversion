@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: pbm-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=True
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_KEY=${SUPABASE_KEY}
+      - SUPABASE_SERVICE_KEY=${SUPABASE_SERVICE_KEY}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - OPENAI_MODEL=${OPENAI_MODEL:-gpt-4}
+      - HUGGINGFACE_API_KEY=${HUGGINGFACE_API_KEY}
+      - SECRET_KEY=${SECRET_KEY}
+      - CORS_ORIGINS=http://localhost:5173,http://localhost:3000
+    volumes:
+      - ./backend:/app
+      - ./uploads:/app/uploads
+      - ./tmp:/app/tmp
+    restart: unless-stopped
+    networks:
+      - pbm-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: pbm-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - pbm-network
+
+  # Redis for Celery (optional, for async job processing)
+  redis:
+    image: redis:7-alpine
+    container_name: pbm-redis
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+    networks:
+      - pbm-network
+
+networks:
+  pbm-network:
+    driver: bridge
+
+volumes:
+  uploads:
+  tmp:
+

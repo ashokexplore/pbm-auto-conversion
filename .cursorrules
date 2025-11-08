@@ -1,0 +1,30 @@
+# PBM Auto Conversion System - Project Intelligence
+
+## Project Overview
+AI-powered data transformation application using LangChain for intelligent file parsing and mapping.
+
+## Key Patterns
+- Service-oriented architecture with clear separation between parsing, AI reasoning, and transformation
+- Template-based approach for reusable mappings
+- RESTful API design for backend
+- Component-based React frontend
+
+## File Format Support Priority
+1. Structured: CSV, XLS, JSON, TSV
+2. Semi-structured: XML, EDI
+3. Unstructured: PDF, DOCX, HTML
+4. Images: JPG, PNG (with OCR capabilities)
+
+## AI Integration Strategy
+- Use LangChain for orchestration
+- Support multiple LLM backends (OpenAI, Ollama)
+- Focus on semantic understanding and mapping recommendations
+- Target ≥95% accuracy with human review
+
+## Development Preferences
+- Prefer free/open-source solutions
+- Use TypeScript for frontend (if applicable)
+- Python type hints for backend
+- Clear error handling and logging
+- Comprehensive documentation
+
