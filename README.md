@@ -1,6 +1,6 @@
 # PBM Auto Conversion System
 
-AI-powered data transformation application that intelligently parses, analyzes, and transforms data files using LangChain and LLMs.
+AI-powered data transformation application that intelligently parses, analyzes, and transforms data files using LangChain and LLMs
 
 ## 🎉 Project Status: Backend Complete!
 
