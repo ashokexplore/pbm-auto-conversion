@@ -4,7 +4,7 @@ LLM provider configuration and management
 from typing import Optional, Union
 from langchain_openai import ChatOpenAI
 from langchain_community.llms import HuggingFaceHub
-from langchain.schema import BaseLanguageModel
+from typing import Any
 import os
 
 from app.core.config import settings
@@ -67,7 +67,7 @@ class LLMProvider:
     
     def get_model(self, 
                   provider: Optional[str] = None,
-                  temperature: float = 0.0) -> BaseLanguageModel:
+                  temperature: float = 0.0) -> Any:
         """
         Get LLM model with automatic fallback
         

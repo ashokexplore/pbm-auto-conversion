@@ -17,7 +17,7 @@ services:
       - OPENAI_MODEL=${OPENAI_MODEL:-gpt-4}
       - HUGGINGFACE_API_KEY=${HUGGINGFACE_API_KEY}
       - SECRET_KEY=${SECRET_KEY}
-      - CORS_ORIGINS=http://localhost:5173,http://localhost:3000
+      - CORS_ORIGINS=${CORS_ORIGINS}
     volumes:
       - ./backend:/app
       - ./uploads:/app/uploads
@@ -56,4 +56,3 @@ networks:
 volumes:
   uploads:
   tmp:
-
